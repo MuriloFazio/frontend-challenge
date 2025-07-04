@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
+import { Saira } from "next/font/google";
 
-const inter = Inter({
-  variable: "--fontinter",
+const saira = Saira({
+  weight: ['300', '400', '500', '600'],
   subsets: ["latin"],
 });
 
@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${inter.variable}`}>
+      <body className={`${saira.className}`}>
         {children}
       </body>
     </html>
