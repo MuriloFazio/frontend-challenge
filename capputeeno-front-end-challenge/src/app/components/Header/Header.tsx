@@ -8,21 +8,24 @@ const sairaStencilOne = Saira_Stencil_One({
   subsets: ["latin"],
 });
 
-
-import { HeaderProps } from "./types";
-
 import {
     HeaderContainer,
     HeaderText,
+    InputBagWrapper,
 } from "./styles";
 
-export const Header: React.FC<HeaderProps> = ({
-    // name
-}) => {
+import { Input } from "../Input";
+
+import { ShoppingCart } from "../ShoppingCart";
+
+export const Header: React.FC = () => {
     return (
         <HeaderContainer>
             <HeaderText href={'/'} className={sairaStencilOne.className}>Capputeeno</HeaderText>
-            <div> Carrinho</div>
+            <InputBagWrapper>
+                <Input placeholder="Procurando por algo específico?"></Input>
+                <ShoppingCart></ShoppingCart>
+            </InputBagWrapper>
         </HeaderContainer>
     )
 };

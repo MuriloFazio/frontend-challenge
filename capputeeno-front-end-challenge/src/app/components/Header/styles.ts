@@ -14,3 +14,9 @@ export const HeaderText = styled(Link)`
     font-size: 40px;
     line-height: 150%;
 `;
+
+export const InputBagWrapper = styled.div`
+    display: flex;
+    gap: 24px;
+    align-items: center;
+`;
