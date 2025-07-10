@@ -3,7 +3,6 @@
 import { ProductsFilter } from "./components/ProductsFilter";
 import { FilterSelect } from "./components/FilterSelect";
 import { ProductsList } from "./components/ProductsList";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import styled from "styled-components";
 
 const StyledMain = styled.main`
@@ -16,10 +15,8 @@ const StyledMain = styled.main`
 `;
 
 export default function Home() {
-  const client = new QueryClient();
   return (
     <div>
-      <QueryClientProvider client={client}>
         <StyledMain>
           <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%'}}>
             <ProductsFilter />
@@ -27,7 +24,6 @@ export default function Home() {
           </div>
           <ProductsList />
         </StyledMain>
-      </QueryClientProvider>
     </div>
   );
 };

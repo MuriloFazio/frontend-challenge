@@ -5,7 +5,6 @@ import { useFilter } from "./useFilter";
 import { useDeferredValue } from "react";
 import { mountQueryByType } from "../utils/filters/graphql-filters";
 
-
 const API_URL = 'http://127.0.0.1:3333/';
 
 const fetchProducts = (query: string): AxiosPromise<ProductsFetchResponse> => {

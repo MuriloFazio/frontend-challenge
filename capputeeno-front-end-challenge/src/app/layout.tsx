@@ -1,10 +1,8 @@
-import type { Metadata } from "next";
 import "./globals.css";
 import { Saira } from "next/font/google";
-
-import { FilterContextProvider } from './contexts/filterContext';
-
 import { Header } from "./components/Header";
+import { Metadata } from "next";
+import { SharedLayout } from "./components/SharedLayout";
 
 const saira = Saira({
   weight: ['300', '400', '500', '600'],
@@ -21,14 +19,14 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
+  
   return (
     <html lang="en">
       <body className={`${saira.className}`}>
-        <FilterContextProvider>
+        <SharedLayout>
           <Header />
           {children}
-        </FilterContextProvider>
+        </SharedLayout>
       </body>
     </html>
   );
