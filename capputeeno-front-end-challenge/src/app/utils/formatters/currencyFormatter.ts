@@ -5,3 +5,7 @@ export const currencyFormatter = (valueInCents: number) => {
         currency: 'BRL',
     })
 };
+
+export const categoryFormatter = (category: string): string => {
+    return category === 'mugs' ? 'caneca' : 'camiseta';
+};
