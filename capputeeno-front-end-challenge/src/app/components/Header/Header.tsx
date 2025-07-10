@@ -17,13 +17,18 @@ import {
 import { Input } from "../Input";
 
 import { ShoppingCart } from "../ShoppingCart";
+import { useFilter } from "@/app/hooks/useFilter";
 
 export const Header: React.FC = () => {
+    const { search, setSearch} = useFilter();
     return (
         <HeaderContainer>
             <HeaderText href={'/'} className={sairaStencilOne.className}>Capputeeno</HeaderText>
             <InputBagWrapper>
-                <Input placeholder="Procurando por algo específico?"></Input>
+                <Input 
+                    placeholder="Procurando por algo específico?" 
+                    handleChange={setSearch} 
+                    value={search}></Input>
                 <ShoppingCart></ShoppingCart>
             </InputBagWrapper>
         </HeaderContainer>
