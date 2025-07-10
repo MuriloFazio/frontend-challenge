@@ -6,7 +6,7 @@ export const HeaderContainer = styled.header`
     align-items: center;
     justify-content: space-between; 
     padding: 20px 160px;
-    
+    background-color: #FFFFFF;
 `;
 
 export const HeaderText = styled(Link)`

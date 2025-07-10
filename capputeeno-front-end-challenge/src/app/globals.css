@@ -1,10 +1,14 @@
 :root {
-  --background: #ffffff;
+  --background-page: #F0F0F5;
   --foreground: #171717;
   --logo-color: #5D5D6D;
   --background-secondary: #F3F5F6;
   --text-dark: #737380;
+  --text-darker: #41414D;
   --delete-color: #DE3838;
+  --highlight-orange: #FFA585;
+  --text-price: #09090A;
+  --separator-line: #DCE2E5;
 }
 
 * {

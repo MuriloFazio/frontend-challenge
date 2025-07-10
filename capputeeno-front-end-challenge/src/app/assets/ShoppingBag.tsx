@@ -35,4 +35,5 @@ export const ShoppingBag = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 )
+
 export default ShoppingBag;
