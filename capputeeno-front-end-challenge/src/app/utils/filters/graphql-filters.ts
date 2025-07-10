@@ -1,11 +1,26 @@
-import { FilterType } from "@/app/contexts/filterContext"
+import { FilterType, PriorityType } from "@/app/contexts/filterContext"
 
 export const getCategoryByType = (type: FilterType) => {
-  console.log("filter type: ", type)
-  console.log("FilterType.MUG: ", FilterType.MUG)
-  console.log("FilterType.MUG: ", FilterType.SHIRT)
-  if(type === FilterType.MUG) return "mugs"
-  if(type === FilterType.SHIRT) return "t-shirts"
-  return FilterType.ALL;
+  if(type === FilterType.MUG) return "mugs";
+  if(type === FilterType.SHIRT) return "t-shirts";
+  return "";
 };
 
+export const getFieldByPriority = (priority: PriorityType) => {
+  if(priority === PriorityType.NEWS) return {
+    field: "created_at",
+    order: "ASC"
+  };
+  if(priority === PriorityType.BIGGEST_PRICE) return {
+    field: "price_in_cents",
+    order: "ASC"
+  };
+  if(priority === PriorityType.LOWEST_PRICE) return {
+    field: "price_in_cents",
+    order: "DESC"
+  };
+  return {
+    field: "sales",
+    order: "ASC"
+  };
+};

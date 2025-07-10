@@ -2,8 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 import axios, { AxiosPromise } from "axios";
 import { ProductsFetchResponse } from "../types/products-response";
 import { useFilter } from "./useFilter";
-import { FilterType } from "../contexts/filterContext";
-import { getCategoryByType } from "../utils/filters/graphql-filters";
+import { FilterType, PriorityType } from "../contexts/filterContext";
+import { getCategoryByType, getFieldByPriority } from "../utils/filters/graphql-filters";
 
 
 const API_URL = 'http://127.0.0.1:3333/';
@@ -13,20 +13,22 @@ const fetchProducts = (query: string): AxiosPromise<ProductsFetchResponse> => {
 };
 
 export const useProducts = () => {
-  const { type } = useFilter();
-  const query = mountQueryByType(type);
+  const { type, priority } = useFilter();
+  const query = mountQueryByType(type, priority);
   const { data } = useQuery({
     queryFn: () => fetchProducts(query),
-    queryKey: ['products', type],
+    queryKey: ['products', type, priority],
   });
   return {
     data: data?.data?.data?.allProducts
   }
 };
 
-const mountQueryByType = (type: FilterType) => {
-  if (type === FilterType.ALL) return `query {
-    allProducts {
+const mountQueryByType = (type: FilterType, priority: PriorityType) => {
+  const { field, order} = getFieldByPriority(priority);
+  const category = getCategoryByType(type);
+  if (type === FilterType.ALL && priority === PriorityType.BEST_SELLER) return `query {
+    allProducts (sortField: "sales"){
       id
       name
       price_in_cents
@@ -37,9 +39,10 @@ const mountQueryByType = (type: FilterType) => {
 
   return `query {
     allProducts(
-      filter: { 
-          category: "${getCategoryByType(type)}"
-        }){
+      sortField: "${field}",
+      sortOrder: "${order}",
+      ${category ? `filter: {category: "${category}"}` : "" }
+        ){
         id
         name
         price_in_cents
@@ -49,3 +52,4 @@ const mountQueryByType = (type: FilterType) => {
   }`;
 
 };
+
