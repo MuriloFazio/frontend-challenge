@@ -12,7 +12,7 @@ export enum FilterType {
 export enum PriorityType {
   'BEST_SELLER',
   'NEWS',
-  'MINOR_PRICE',
+  'LOWEST_PRICE',
   'BIGGEST_PRICE',
 };
 

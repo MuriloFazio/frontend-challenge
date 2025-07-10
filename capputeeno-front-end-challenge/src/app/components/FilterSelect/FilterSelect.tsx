@@ -38,7 +38,7 @@ export const FilterSelect: React.FC = () => {
         <FilterDropdown>
           <DropdownOption onClick={() => handlePriorityChange(PriorityType.NEWS)}>Novidades</DropdownOption>
           <DropdownOption onClick={() => handlePriorityChange(PriorityType.BIGGEST_PRICE)}>Preço: Maior - menor</DropdownOption>
-          <DropdownOption onClick={() => handlePriorityChange(PriorityType.MINOR_PRICE)}>Preço: Menor - maior</DropdownOption>
+          <DropdownOption onClick={() => handlePriorityChange(PriorityType.LOWEST_PRICE)}>Preço: Menor - maior</DropdownOption>
           <DropdownOption onClick={() => handlePriorityChange(PriorityType.BEST_SELLER)}>Mais vendidos</DropdownOption>
         </FilterDropdown>
       }
