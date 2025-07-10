@@ -24,3 +24,32 @@ export const getFieldByPriority = (priority: PriorityType) => {
     order: "ASC"
   };
 };
+
+export const mountQueryByType = (type: FilterType, priority: PriorityType) => {
+  const { field, order} = getFieldByPriority(priority);
+  const category = getCategoryByType(type);
+  if (type === FilterType.ALL && priority === PriorityType.BEST_SELLER) return `query {
+    allProducts (sortField: "sales"){
+      id
+      name
+      price_in_cents
+      image_url
+      category
+    }
+  }`;
+
+  return `query {
+    allProducts(
+      sortField: "${field}",
+      sortOrder: "${order}",
+      ${category ? `filter: {category: "${category}"}` : "" }
+        ){
+        id
+        name
+        price_in_cents
+        image_url
+        category
+      }
+  }`;
+
+};

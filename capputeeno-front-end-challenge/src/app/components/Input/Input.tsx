@@ -13,11 +13,17 @@ import { SearchIcon } from "../../assets/SearchIcon";
 
 export const Input: React.FC<InputProps> = ({
   placeholder,
+  value,
+  handleChange,
 }) => {
 
   return (
     <Container>
-      <InputContainer placeholder={placeholder}></InputContainer>
+      <InputContainer 
+        placeholder={placeholder} 
+        onChange={(event) => handleChange(event.target.value)}
+        value={value}
+      ></InputContainer>
       <SearchIconWrapper>
         <SearchIcon />
       </SearchIconWrapper>
