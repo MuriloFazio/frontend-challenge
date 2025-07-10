@@ -4,6 +4,7 @@ import { PageContainer, BackButtonWrapper } from "./styles";
 import { BackButtonIcon } from "@/app/assets/BackButton";
 import { useProduct } from "../hooks/useProduct";
 import React from "react";
+import { ProductInfo } from "../components/ProductInfo";
 
 export default function Products(params: { searchParams: { id: string } }) {
   const { data } = useProduct(params.searchParams.id);
@@ -14,21 +15,14 @@ export default function Products(params: { searchParams: { id: string } }) {
             <BackButtonIcon />
             voltar
           </BackButtonWrapper>
-          <div>
-            <p>
-              Componente com as infos do produto
-            </p>
-            <div>{params.searchParams.id}</div>
-            {
-              data &&
-              <>
-                <div>{data.category}</div>
-                <div>{data.name}</div>
-                <div>{data.description}</div>
-                <div>{data.price_in_cents}</div>
-              </>
-            }
-          </div>
+          {
+            data && <ProductInfo 
+              category={data ? data.category : ""} 
+              title={data ? data?.name : ""} 
+              price={data ? data.price_in_cents : 0} 
+              description={data ? data.description : ""} 
+              imageUrl={data ? data .image_url : ""} />
+          }
         </PageContainer>
     </div>
   )

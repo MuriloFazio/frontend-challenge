@@ -12,6 +12,7 @@ const fetchProduct = (id: string): AxiosPromise<ProductFetchResponse> => {
       name
       price_in_cents
       description
+      image_url
     }
   }` });
 };
